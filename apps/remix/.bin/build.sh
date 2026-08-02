@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# Linux image builds require LF line endings; enforced by the repository attributes.
 
 # Exit on error.
 set -e
