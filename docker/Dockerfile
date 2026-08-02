@@ -117,7 +117,7 @@ RUN npm ci --only=production
 
 # The server bundle externalizes native image processing. Assert that its
 # runtime dependency is resolvable from the bundle's execution directory.
-RUN node --input-type=module -e "await import('sharp')"
+RUN cd apps/remix && node --input-type=module -e "await import('sharp')"
 
 # Automatically leverage output traces to reduce image size
 # https://nodejs.org/docs/advanced-features/output-file-tracing
