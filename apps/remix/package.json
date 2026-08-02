@@ -20,6 +20,7 @@
     "@documenso/auth": "*",
     "@documenso/ee": "*",
     "@documenso/lib": "*",
+    "@documenso/nodemailer-resend": "5.0.0",
     "@documenso/prisma": "*",
     "@documenso/tailwind-config": "*",
     "@documenso/trpc": "*",

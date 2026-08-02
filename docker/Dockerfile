@@ -115,9 +115,9 @@ COPY --from=builder --chown=nodejs:nodejs /app/patches ./patches
 
 RUN npm ci --only=production
 
-# The server bundle externalizes native image processing. Assert that its
-# runtime dependency is resolvable from the bundle's execution directory.
-RUN cd apps/remix && node --input-type=module -e "await import('sharp')"
+# The server bundle externalizes these packages. Assert that the production
+# install resolves them from the bundle's execution directory.
+RUN cd apps/remix && node --input-type=module -e "await Promise.all([import('sharp'), import('@documenso/nodemailer-resend'), import('hono-react-router-adapter/node')])"
 
 # Automatically leverage output traces to reduce image size
 # https://nodejs.org/docs/advanced-features/output-file-tracing
