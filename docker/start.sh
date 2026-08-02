@@ -22,7 +22,7 @@ printf "📊 Certificate status: http://localhost:3000/api/certificate-status\n"
 printf "📦 Source: https://github.com/fra50/frai-sign\n\n"
 
 printf "🗄️  Running database migrations...\n"
-npx prisma migrate deploy --schema ../../packages/prisma/schema.prisma
+node ../../node_modules/prisma/build/index.js migrate deploy --schema ../../packages/prisma/schema.prisma
 
 printf "🌟 Starting FRAI Sign server...\n"
 HOSTNAME=0.0.0.0 node build/server/main.js
