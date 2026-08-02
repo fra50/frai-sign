@@ -42,6 +42,7 @@ WORKDIR /app
 ENV HUSKY 0
 ENV DOCKER_OUTPUT 1
 ENV NEXT_TELEMETRY_DISABLED 1
+ENV NODE_OPTIONS="--max-old-space-size=4096"
 
 # Encryption keys
 ARG NEXT_PRIVATE_ENCRYPTION_KEY="CAFEBABE"
@@ -126,6 +127,12 @@ COPY --from=installer --chown=nodejs:nodejs /app/packages/prisma/migrations ./pa
 # Generate the prisma client again
 RUN npx prisma generate --schema ./packages/prisma/schema.prisma
 
+# npm is only required while assembling the image. The running service invokes
+# Prisma and the application directly with Node.
+USER root
+RUN rm -rf /usr/local/lib/node_modules/npm \
+    && rm -f /usr/local/bin/npm /usr/local/bin/npx
+USER nodejs
 
 # Get the start script from docker/
 COPY --chown=nodejs:nodejs ./docker/start.sh /app/apps/remix/start.sh

@@ -33,8 +33,8 @@ export const TemplateFooter = ({ isDocument = true, reportUrl }: TemplateFooterP
         <Text className="my-4 text-base text-muted-foreground">
           <Trans>
             This document was sent using{' '}
-            <Link className="text-primary" href="https://documen.so/mail-footer">
-              Documenso
+            <Link className="text-primary" href="https://frai.es">
+              FRAI Sign
             </Link>
             .
           </Trans>
@@ -64,9 +64,9 @@ export const TemplateFooter = ({ isDocument = true, reportUrl }: TemplateFooterP
 
       {!branding.brandingEnabled && (
         <Text className="my-8 text-muted-foreground text-sm">
-          Documenso, Inc.
+          FRAI Sign
           <br />
-          2261 Market Street, #5211, San Francisco, CA 94114, USA
+          <Link href="https://github.com/fra50/frai-sign">Open-source code and license notices</Link>
         </Text>
       )}
     </Section>
