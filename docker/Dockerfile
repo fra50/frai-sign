@@ -115,6 +115,10 @@ COPY --from=builder --chown=nodejs:nodejs /app/patches ./patches
 
 RUN npm ci --only=production
 
+# The server bundle externalizes native image processing. Assert that its
+# runtime dependency is resolvable from the bundle's execution directory.
+RUN node --input-type=module -e "await import('sharp')"
+
 # Automatically leverage output traces to reduce image size
 # https://nodejs.org/docs/advanced-features/output-file-tracing
 COPY --from=installer --chown=nodejs:nodejs /app/apps/remix/build ./apps/remix/build
