@@ -30,7 +30,7 @@ export const EnvelopeSignerHeader = () => {
   const hasCustomBrandingLogo = envelopeData.settings.brandingEnabled && Boolean(envelopeData.settings.brandingLogo);
 
   return (
-    <nav className="embed--DocumentWidgetHeader flex max-w-screen flex-row justify-between border-border border-b bg-background px-4 py-3 md:px-6">
+    <nav className="embed--DocumentWidgetHeader flex min-h-[60px] max-w-screen flex-row items-center justify-between border-border border-b bg-background/95 px-4 py-2 backdrop-blur md:px-6">
       {/* Left side - Logo and title */}
       <div className="flex min-w-0 flex-1 items-center space-x-2 md:w-auto md:flex-none">
         {!isEmbedSigning &&

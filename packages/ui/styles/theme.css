@@ -5,45 +5,51 @@
 @layer base {
   :root,
   .dark-mode-disabled {
-    --background: 0 0% 100%;
-    --foreground: 222.2 47.4% 11.2%;
+    /* FRAI Living Precision visual system. Keep these shared primitives in
+       sync with frai-landing-shadcn/src/styles/design-tokens.css. */
+    --background: 60 27% 98%;
+    --foreground: 240 11% 5%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 240 7% 97%;
+    --muted-foreground: 60 1% 39%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 47.4% 11.2%;
+    --popover: 60 27% 98%;
+    --popover-foreground: 240 11% 5%;
 
-    --card: 0 0% 100%;
-    --card-border: 214.3 31.8% 91.4%;
-    --card-border-tint: 112 205 159;
-    --card-foreground: 222.2 47.4% 11.2%;
+    --card: 240 14% 99%;
+    --card-border: 60 7% 86%;
+    --card-border-tint: 208 254 22;
+    --card-foreground: 240 11% 5%;
 
     --field-card: 95 74% 90%;
-    --field-card-border: 95.08 71.08% 67.45%;
-    --field-card-foreground: 222.2 47.4% 11.2%;
+    --field-card-border: 72 99% 54%;
+    --field-card-foreground: 240 11% 5%;
 
-    --widget: 0 0% 97%;
-    --widget-foreground: 0 0% 95%;
+    --widget: 240 7% 97%;
+    --widget-foreground: 220 13% 95%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
+    --border: 60 7% 86%;
+    --input: 60 6% 77%;
 
-    --primary: 95.08 71.08% 67.45%;
-    --primary-foreground: 95.08 71.08% 10%;
+    --primary: 0 0% 6%;
+    --primary-foreground: 60 27% 98%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 220 13% 95%;
+    --secondary-foreground: 240 11% 5%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: 72 99% 54%;
+    --accent-foreground: 240 11% 5%;
 
     --destructive: 0 100% 50%;
     --destructive-foreground: 210 40% 98%;
 
-    --ring: 95.08 71.08% 67.45%;
+    --ring: 72 99% 54%;
 
-    --radius: 0.5rem;
+    --radius: 0.875rem;
+    --frai-signal: 72 99% 54%;
+    --frai-line-strong: 60 6% 77%;
+    --frai-paper: 60 27% 98%;
+    --frai-ink: 240 11% 5%;
 
     --warning: 54 96% 45%;
 
@@ -142,43 +148,47 @@
   }
 
   .dark:not(.dark-mode-disabled) {
-    --background: 0 0% 14.9%;
-    --foreground: 0 0% 97%;
+    --background: 240 11% 5%;
+    --foreground: 210 11% 96%;
 
-    --muted: 0 0% 23.4%;
-    --muted-foreground: 0 0% 85%;
+    --muted: 225 13% 8%;
+    --muted-foreground: 220 9% 71%;
 
-    --popover: 0 0% 14.9%;
-    --popover-foreground: 0 0% 90%;
+    --popover: 240 9% 6%;
+    --popover-foreground: 210 11% 96%;
 
-    --card: 0 0% 14.9%;
-    --card-border: 0 0% 27.9%;
-    --card-border-tint: 112 205 159;
-    --card-foreground: 0 0% 95%;
+    --card: 240 9% 6%;
+    --card-border: 230 10% 16%;
+    --card-border-tint: 208 254 22;
+    --card-foreground: 210 11% 96%;
 
-    --widget: 0 0% 14.9%;
-    --widget-foreground: 0 0% 18%;
+    --widget: 225 13% 8%;
+    --widget-foreground: 230 10% 16%;
 
-    --border: 0 0% 27.9%;
-    --input: 0 0% 27.9%;
+    --border: 230 10% 16%;
+    --input: 229 9% 22%;
 
     --field-border: 214.3 31.8% 91.4%;
 
-    --primary: 95.08 71.08% 67.45%;
-    --primary-foreground: 95.08 71.08% 10%;
+    --primary: 72 99% 54%;
+    --primary-foreground: 240 11% 5%;
 
-    --secondary: 0 0% 23.4%;
-    --secondary-foreground: 95.08 71.08% 67.45%;
+    --secondary: 230 10% 16%;
+    --secondary-foreground: 210 11% 96%;
 
-    --accent: 0 0% 27.9%;
-    --accent-foreground: 95.08 71.08% 67.45%;
+    --accent: 72 99% 54%;
+    --accent-foreground: 240 11% 5%;
 
     --destructive: 0 87% 62%;
     --destructive-foreground: 0 87% 19%;
 
-    --ring: 95.08 71.08% 67.45%;
+    --ring: 72 99% 54%;
 
-    --radius: 0.5rem;
+    --radius: 0.875rem;
+    --frai-signal: 72 99% 54%;
+    --frai-line-strong: 229 9% 22%;
+    --frai-paper: 240 11% 5%;
+    --frai-ink: 210 11% 96%;
 
     --warning: 54 96% 45%;
 

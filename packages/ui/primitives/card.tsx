@@ -27,15 +27,14 @@ const Card = React.forwardRef<HTMLDivElement, CardProps>(
           } as React.CSSProperties
         }
         className={cn(
-          'group relative rounded-lg border-2 bg-background text-foreground',
+          'group relative rounded-[18px] border bg-card text-card-foreground',
           {
             'backdrop-blur-[2px]': backdropBlur,
-            'gradient-border-mask before:pointer-events-none before:absolute before:-inset-[2px] before:rounded-lg before:p-[2px] before:[background:linear-gradient(var(--card-gradient-degrees),theme(colors.primary.DEFAULT/50%)_5%,theme(colors.border/80%)_30%)]':
+            'gradient-border-mask before:pointer-events-none before:absolute before:-inset-px before:rounded-[18px] before:p-px before:[background:linear-gradient(var(--card-gradient-degrees),hsl(var(--frai-signal)/50%)_5%,hsl(var(--border)/80%)_30%)]':
               gradient,
-            'dark:gradient-border-mask before:pointer-events-none before:absolute before:-inset-[2px] before:rounded-lg before:p-[2px] before:[background:linear-gradient(var(--card-gradient-degrees),theme(colors.primary.DEFAULT/70%)_5%,theme(colors.border/80%)_30%)]':
+            'dark:gradient-border-mask before:pointer-events-none before:absolute before:-inset-px before:rounded-[18px] before:p-px before:[background:linear-gradient(var(--card-gradient-degrees),hsl(var(--frai-signal)/70%)_5%,hsl(var(--border)/80%)_30%)]':
               gradient,
-            'shadow-[0_0_0_4px_theme(colors.gray.100/70%),0_0_0_1px_theme(colors.gray.100/70%),0_0_0_0.5px_var(colors.primary.DEFAULT/70%)]': true,
-            'dark:shadow-[0]': true,
+            'shadow-[0_12px_40px_rgba(0,0,0,0.06)]': true,
           },
           className,
         )}
