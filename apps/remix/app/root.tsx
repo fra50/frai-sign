@@ -19,13 +19,12 @@ import {
   useLoaderData,
   useMatches,
 } from 'react-router';
-import { PreventFlashOnWrongTheme, ThemeProvider, useTheme } from 'remix-themes';
+import { PreventFlashOnWrongTheme, Theme, ThemeProvider } from 'remix-themes';
 
 import type { Route } from './+types/root';
 import stylesheet from './app.css?url';
 import { GenericErrorLayout } from './components/general/generic-error-layout';
 import { langCookie } from './storage/lang-cookie.server';
-import { themeSessionResolver } from './storage/theme-session.server';
 import { appMetaTags } from './utils/meta';
 import { nonce } from './utils/nonce';
 
@@ -44,8 +43,6 @@ export const shouldRevalidate = () => false;
 
 export async function loader({ context, request }: Route.LoaderArgs) {
   const session = await getOptionalSession(request);
-
-  const { getTheme } = await themeSessionResolver(request);
 
   const cookieHeader = request.headers.get('cookie') ?? '';
 
@@ -66,7 +63,6 @@ export async function loader({ context, request }: Route.LoaderArgs) {
   return data(
     {
       lang,
-      theme: getTheme(),
       disableAnimations,
       // Surface the per-request CSP nonce produced by `securityHeadersMiddleware` so all
       // SSR-rendered <script>/<style> elements in this layout (and child
@@ -90,26 +86,15 @@ export async function loader({ context, request }: Route.LoaderArgs) {
 }
 
 export function Layout({ children }: { children: React.ReactNode }) {
-  const { theme } = useLoaderData<typeof loader>() || {};
-
   return (
-    <ThemeProvider specifiedTheme={theme} themeAction="/api/theme">
+    <ThemeProvider specifiedTheme={Theme.LIGHT} themeAction="/api/theme">
       <LayoutContent>{children}</LayoutContent>
     </ThemeProvider>
   );
 }
 
 export function LayoutContent({ children }: { children: React.ReactNode }) {
-  const {
-    publicEnv,
-    session,
-    lang,
-    disableAnimations,
-    nonce: cspNonce,
-    ...data
-  } = useLoaderData<typeof loader>() || {};
-
-  const [theme] = useTheme();
+  const { publicEnv, session, lang, disableAnimations, nonce: cspNonce } = useLoaderData<typeof loader>() || {};
 
   // Recipient routes (signing pages) put `documenso-branded` on <body> so the
   // <style> block from `RecipientBranding` applies to BOTH the main tree and
@@ -119,7 +104,7 @@ export function LayoutContent({ children }: { children: React.ReactNode }) {
   const isRecipientRoute = matches.some((m) => m.id?.startsWith('routes/_recipient+'));
 
   return (
-    <html translate="no" lang={lang} data-theme={theme} className={theme ?? ''}>
+    <html translate="no" lang={lang} data-theme={Theme.LIGHT} className={Theme.LIGHT}>
       <head>
         <meta charSet="utf-8" />
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -129,7 +114,7 @@ export function LayoutContent({ children }: { children: React.ReactNode }) {
         <Meta />
         <Links nonce={nonce(cspNonce)} />
         <meta name="google" content="notranslate" />
-        <PreventFlashOnWrongTheme ssrTheme={Boolean(data.theme)} nonce={nonce(cspNonce)} />
+        <PreventFlashOnWrongTheme ssrTheme nonce={nonce(cspNonce)} />
 
         {disableAnimations && (
           <style

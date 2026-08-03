@@ -3,7 +3,6 @@ import { useSession } from '@documenso/lib/client-only/providers/session';
 import { isPersonalLayout } from '@documenso/lib/utils/organisations';
 import { trpc } from '@documenso/trpc/react';
 import { Sheet, SheetContent } from '@documenso/ui/primitives/sheet';
-import { ThemeSwitcher } from '@documenso/ui/primitives/theme-switcher';
 import { Trans, useLingui } from '@lingui/react/macro';
 import { ReadStatus } from '@prisma/client';
 import { useMemo } from 'react';
@@ -111,10 +110,6 @@ export const AppNavMobile = ({ isMenuOpen, onMenuOpenChange }: AppNavMobileProps
         </div>
 
         <div className="mt-auto flex w-full flex-col space-y-4 self-end">
-          <div className="w-fit">
-            <ThemeSwitcher />
-          </div>
-
           <p className="text-muted-foreground text-sm">
             © {new Date().getFullYear()} FRAI.
             <br />
