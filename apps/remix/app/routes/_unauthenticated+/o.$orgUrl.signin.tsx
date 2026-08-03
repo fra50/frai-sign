@@ -109,7 +109,7 @@ export default function OrganisationSignIn({ loaderData }: Route.ComponentProps)
       await authClient.oidc.org.signIn({
         orgUrl,
       });
-    } catch (err) {
+    } catch (_err) {
       toast({
         title: t`An unknown error occurred`,
         description: t`We encountered an unknown error while attempting to sign you In. Please try again later.`,
@@ -154,8 +154,8 @@ export default function OrganisationSignIn({ loaderData }: Route.ComponentProps)
 
   return (
     <div className="w-screen max-w-lg px-4">
-      <div className="z-10 rounded-xl border border-border bg-neutral-100 p-6 dark:bg-background">
-        <h1 className="font-semibold text-2xl">
+      <div className="z-10 rounded-[18px] border border-border bg-card p-6 shadow-[0_12px_40px_rgba(0,0,0,0.06)]">
+        <h1 className="font-semibold text-2xl tracking-[-0.04em]">
           <Trans>Welcome to {organisationName}</Trans>
         </h1>
 

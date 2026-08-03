@@ -64,8 +64,71 @@
 
 @layer base {
   :root {
-    --font-sans: "Inter";
+    --font-sans: "Geist", "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
     --font-signature: "Caveat";
     --font-noto: "Noto Sans", "Noto Sans Korean", "Noto Sans Japanese", "Noto Sans Chinese";
+  }
+
+  html {
+    background: hsl(var(--background));
+  }
+
+  body {
+    min-width: 320px;
+    font-family: var(--font-sans);
+    letter-spacing: -0.01em;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  ::selection {
+    background: hsl(var(--frai-signal));
+    color: hsl(var(--accent-foreground));
+  }
+}
+
+@layer components {
+  .frai-auth-shell {
+    background-color: hsl(var(--background));
+    background-image:
+      linear-gradient(to right, hsl(var(--border) / 0.55) 1px, transparent 1px),
+      linear-gradient(to bottom, hsl(var(--border) / 0.25) 1px, transparent 1px);
+    background-position: center;
+    background-size:
+      min(25vw, 360px) 100%,
+      100% 25vh;
+  }
+
+  .frai-auth-shell::before {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at center, transparent 12%, hsl(var(--background) / 0.82) 74%);
+    content: "";
+    pointer-events: none;
+  }
+
+  .frai-brand-signal {
+    display: inline-block;
+    width: 7px;
+    height: 7px;
+    border-radius: 999px;
+    background: hsl(var(--frai-signal));
+    box-shadow: 0 0 10px hsl(var(--frai-signal) / 0.46);
+  }
+}
+
+@media (max-width: 640px) {
+  .frai-auth-shell {
+    background-size:
+      50vw 100%,
+      100% 25vh;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto;
   }
 }

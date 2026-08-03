@@ -50,23 +50,23 @@ export const Header = ({ className, ...props }: HeaderProps) => {
   return (
     <header
       className={cn(
-        'sticky top-0 z-[60] flex h-16 w-full items-center border-b border-b-transparent bg-background/95 backdrop-blur duration-200 supports-backdrop-blur:bg-background/60',
+        'sticky top-0 z-[60] flex h-[72px] w-full items-center border-b border-b-transparent bg-background/95 backdrop-blur duration-200 supports-backdrop-blur:bg-background/80',
         scrollY > 5 && 'border-b-border',
         className,
       )}
       {...props}
     >
-      <div className="mx-auto flex w-full max-w-screen-xl items-center justify-between gap-x-4 px-4 md:justify-normal md:px-8">
+      <div className="mx-auto flex w-full max-w-[1520px] items-center justify-between gap-x-4 px-6 md:justify-normal md:px-[clamp(24px,4vw,72px)]">
         <Link
           to={getRootHref(params)}
-          className="hidden rounded-md ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 md:inline"
+          className="hidden rounded-full ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 md:inline"
         >
           <BrandingLogo className="h-6 w-auto" />
         </Link>
 
         <AppNavDesktop setIsCommandMenuOpen={setIsCommandMenuOpen} />
 
-        <Button asChild variant="outline" className="relative hidden h-10 w-10 rounded-lg md:flex">
+        <Button asChild variant="outline" size="sm" className="relative hidden w-10 px-0 md:flex">
           <Link to="/inbox" className="relative block h-10 w-10">
             <InboxIcon className="h-5 w-5 flex-shrink-0 text-muted-foreground transition-colors hover:text-foreground" />
 
@@ -81,11 +81,11 @@ export const Header = ({ className, ...props }: HeaderProps) => {
         <div className="md:ml-4">{isPersonalLayout(organisations) ? <MenuSwitcher /> : <OrgMenuSwitcher />}</div>
 
         <div className="flex flex-row items-center space-x-4 md:hidden">
-          <button onClick={() => setIsCommandMenuOpen(true)}>
+          <button type="button" onClick={() => setIsCommandMenuOpen(true)}>
             <SearchIcon className="h-6 w-6 text-muted-foreground" />
           </button>
 
-          <button onClick={() => setIsHamburgerMenuOpen(true)}>
+          <button type="button" onClick={() => setIsHamburgerMenuOpen(true)}>
             <MenuIcon className="h-6 w-6 text-muted-foreground" />
           </button>
 

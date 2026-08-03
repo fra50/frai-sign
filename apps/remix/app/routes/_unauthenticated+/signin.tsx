@@ -123,14 +123,14 @@ export default function SignIn({ loaderData }: Route.ComponentProps) {
 
   return (
     <div className="w-screen max-w-lg px-4">
-      <div className="z-10 rounded-xl border border-border bg-neutral-100 p-6 dark:bg-background">
+      <div className="z-10 rounded-[18px] border border-border bg-card p-6 shadow-[0_12px_40px_rgba(0,0,0,0.06)]">
         {signupError && (
           <Alert variant="destructive" className="mb-4">
             <AlertDescription>{_(signupError)}</AlertDescription>
           </Alert>
         )}
 
-        <h1 className="font-semibold text-2xl">
+        <h1 className="font-semibold text-2xl tracking-[-0.04em]">
           <Trans>Sign in to your account</Trans>
         </h1>
 
